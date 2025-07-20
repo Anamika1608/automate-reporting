@@ -1,7 +1,7 @@
 import React from "react";
 import BG from "../../assets/bg.png";
 import BG2 from "../../assets/bg2.png";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const Hero: React.FC = () => {
   const videoSrc = "https://player.vimeo.com/video/1059493429?h=d627d7e6b2";
