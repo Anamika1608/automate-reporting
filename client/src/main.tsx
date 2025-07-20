@@ -10,12 +10,15 @@ import {
 
 } from "react-router-dom";
 import HomePage from './pages/Home/page.js';
+import Login from './components/Login/Login.js';
+import Signup from './components/Signup/Signup.js';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-
     <Route path='/' element={<App />}>
       <Route path="" element={<HomePage />} />
+      <Route path="login" element={<Login />} />
+      <Route path="signup" element={<Signup />} />
     </Route>
   )
 )

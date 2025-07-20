@@ -1,14 +1,15 @@
-import { prisma } from '@/lib/prisma';
+import { prisma } from '../../lib/prisma';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import config from '@/config';
+import config from '../../config';
 
 import { User } from '@prisma/client';
 
-import { AppError } from '@/utils/errors'; 
+import { AppError } from '../../utils/errors';
 
 export const authService = {
-  async signup(data: Omit<User, 'id' | 'createdAt' | 'updatedAt' >) {
+  async signup(data: Omit<User, 'id' | 'createdAt' | 'updatedAt'>) {
+    console.log("data", data)
     const existingUser = await prisma.user.findUnique({ where: { email: data.email } });
     if (existingUser) {
       throw new AppError('Email already in use', 409);
@@ -23,7 +24,12 @@ export const authService = {
     });
 
     const { password, ...userWithoutPassword } = user;
-    return userWithoutPassword;
+
+    const token = jwt.sign({ userId: user.id }, config.jwtSecret, {
+      expiresIn: '7d',
+    });
+
+    return { user: userWithoutPassword, token };
   },
 
   async login(data: Pick<User, 'email' | 'password'>) {
@@ -37,10 +43,12 @@ export const authService = {
       throw new AppError('Invalid email or password', 401);
     }
 
+    const { password, ...userWithoutPassword } = user;
+
     const token = jwt.sign({ userId: user.id }, config.jwtSecret, {
       expiresIn: '7d',
     });
 
-    return token;
+    return { user: userWithoutPassword, token };
   },
 };

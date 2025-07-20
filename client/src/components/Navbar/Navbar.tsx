@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const handleStartClick = () => {
+    navigate('/login')
+  }
 
   return (
     <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
@@ -103,7 +109,7 @@ const Navbar: React.FC = () => {
               style={{
                 background: '#EADFFF',
               }}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleStartClick}
             >
               Start for free
             </button>
