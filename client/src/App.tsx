@@ -5,13 +5,14 @@ import Footer from './components/Footer/Footer.tsx'
 import './App.css'
 
 function App() {
-
   return (
-    <>
+    <div className="app-container">
       <Navbar />
-      <Outlet />
-      <Footer/>
-    </>
+      <div className="content">
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
   )
 }
 

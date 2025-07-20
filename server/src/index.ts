@@ -1,17 +1,16 @@
 import express from "express";
-import 'dotenv/config';
-
 import db from "./config/dbConnection";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import config from "./config"
 
 const app = express()
-const port = process.env.PORT 
+const port = config.port
 
 app.use(cors(
     {
         credentials: true,
-        origin: process.env.FRONTEND_URL
+        origin: config.frontendUrl
     }
 ));
 
