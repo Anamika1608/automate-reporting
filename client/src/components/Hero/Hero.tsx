@@ -1,7 +1,9 @@
 import React from "react";
 import BG from "../../assets/bg.png";
 import BG2 from "../../assets/bg2.png";
-import { useRef } from "react";
+import H1 from "../../assets/h1.png";
+import H2 from "../../assets/h2.png";
+import { useRef, useState } from "react";
 
 const Hero: React.FC = () => {
   const videoSrc = "https://player.vimeo.com/video/1059493429?h=d627d7e6b2";
@@ -9,9 +11,6 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background Image */}
-
-
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 py-8">
         <div
@@ -23,8 +22,38 @@ const Hero: React.FC = () => {
             backgroundRepeat: 'no-repeat',
           }}
         />
-        <div className="text-center max-w-5xl z-10 mx-auto">
+        
+        {/* Left rotated image - positioned absolutely */}
+        <img 
+          src={H1}
+          alt="Left decorative image" 
+          className="absolute z-5 hidden sm:block"
+          style={{
+            left: 'clamp(20px, 8vw, 120px)',
+            top: '67%',
+            transform: 'translateY(-50%) rotate(-4.68deg)',
+           width: 'clamp(180px, 18vw, 260px)',
+            height: 'clamp(162px, 16.2vw, 235px)',
+            objectFit: 'contain',
+          }}
+        />
 
+        {/* Right rotated image - positioned absolutely */}
+        <img 
+          src={H2}
+          alt="Right decorative image" 
+          className="absolute z-5 hidden sm:block"
+          style={{
+            right: 'clamp(20px, 8vw, 120px)',
+            top: '67%',
+            transform: 'translateY(-50%) rotate(4.68deg)',
+            width: 'clamp(180px, 18vw, 260px)',
+            height: 'clamp(162px, 16.2vw, 235px)',
+            objectFit: 'contain',
+          }}
+        />
+
+        <div className="text-center max-w-5xl z-10 mx-auto">
           {/* Main Content */}
           <div className="mb-12">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
@@ -38,7 +67,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-16 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-16 mb-8">
             <button
               className="w-full sm:w-auto"
               style={{
@@ -129,17 +158,16 @@ const Hero: React.FC = () => {
             </svg>
           </div>
         </div>
-
       </div>
 
-      
-      <div className="flex justify-center w-full" style={{
+      {/* Video Section */}
+      <div className="flex justify-center w-full pb-8 sm:pb-16" style={{
         backgroundImage: `url(${BG2})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}>
-        <div className="w-full max-w-[320px] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1000px] bg-white rounded-lg p-3 shadow-lg">
+        <div className="w-full max-w-[320px] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1000px] bg-white rounded-lg p-3 shadow-lg mx-4">
           <div className="relative w-full pt-[56.25%] bg-gray-100 rounded-lg overflow-hidden">
             <iframe
               ref={videoRef}
