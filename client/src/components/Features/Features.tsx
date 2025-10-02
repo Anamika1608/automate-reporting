@@ -1,10 +1,10 @@
 import React from 'react';
-import F1 from "../../assets/f1.png";
-import F2 from "../../assets/f2.png";
-import F3 from "../../assets/f3.png";
-import F4 from "../../assets/f4.png";
-import F5 from "../../assets/f5.png";
-import F6 from "../../assets/f6.png";
+import F1 from "../../assets/F1.png";
+import F2 from "../../assets/F2.png";
+import F3 from "../../assets/F3.png";
+import F4 from "../../assets/F4.png";
+import F5 from "../../assets/F5.png";
+import F6 from "../../assets/F6.png";
 
 interface FeatureCard {
   title: string;
